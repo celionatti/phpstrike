@@ -14,6 +14,7 @@ declare(strict_types=1);
 use Dotenv\Dotenv;
 use celionatti\Bolt\CLI\BoltCLI;
 use celionatti\Bolt\Database\Database;
+use celionatti\Bolt\Container\Container;
 use celionatti\Bolt\Illuminate\Schema\Schema;
 
 
@@ -26,7 +27,10 @@ require __DIR__ . '/configs/load.php';
 
 $strike = new BoltCLI();
 
-$database = new Database();
+$container = new Container();
+
+$container->singleton('Database', fn () => Database::getInstance());
+$database = $container->make('Database');
 
 Schema::setConnection($database);
 
