@@ -19,6 +19,7 @@ use celionatti\Bolt\Illuminate\Schema\Schema;
 
 
 require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/vendor/celionatti/bolt/Configs/functions.php';
 
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
